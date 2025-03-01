@@ -1,18 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Recipe App</title>
-</head>
-<body>
-    <div class="container">
-        <h1 class="title">Recipe App</h1>
-        <form>
-            <input type="text" placeholder="Search your recipe...">
-            <a href="#">View Recipe</a>
-        </form>
-        <p class="item-data">Calories: 120s</p>
-    </div>
-</body>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <section>
+      <div class="container">
+        <h1 class="brand">Recipe Finder</h1>
+        <form><input type="text" placeholder="Search your recipe..." />></form>
+        <div class="search-results">
+          <div class="item">
+            <div class="flex-container">
+              <img src="./images/recipe.jpg" alt="Recipe" />
+              <a href="#">View Recipe</a>
+            </div>
+            <p class="item-data">Calories: 120</p>
+          </div>
+          <div class="item">
+            <div class="flex-container">
+              <img src="./images/recipe.jpg" alt="Recipe" />
+              <a href="#">View Recipe</a>
+            </div>
+            <p class="item-data">Calories: 120</p>
+          </div>
+          <div class="item">
+            <div class="flex-container">
+              <img src="./images/recipe.jpg" alt="Recipe" />
+              <a href="#">View Recipe</a>
+            </div>
+            <p class="item-data">Calories: 120</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script src="scripts.js"></script>
+  </body>
 </html>

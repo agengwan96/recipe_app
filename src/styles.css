@@ -127,3 +127,7 @@ ion-icon{
     letter-spacing: 0.05rem;
     line-height: 2rem;
 }
+
+.submit{
+    display: none;
+}

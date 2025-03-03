@@ -2,17 +2,15 @@ const searchForm = document.querySelector('form');
 const searchResult = document.querySelector('.search-results');
 const container = document.querySelector('.container');
 let searchQuery = '';
-let countFrom = 1;
-let countTo = 20;
 
-searchForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    searchQuery = e.target.querySelector('input').value;
+nextBtn.addEventListener('click', () => {
+    countFrom += 20;
+    countTo += 20;
     fetchAPI();
 });
 
 async function fetchAPI(){
-    const url = `https://edamam-recipe-search.p.rapidapi.com/api/recipes/v2/?q=${searchQuery}&type=public`;
+    const url = `https://edamam-recipe-search.p.rapidapi.com/api/recipes/v2?&q=${searchQuery}&type=public&random=true`;
     const options = {
         method: 'GET',
         headers: {
@@ -24,6 +22,8 @@ async function fetchAPI(){
     const response = await fetch(url, options);
     const data = await response.json();
     generateHTML(data.hits);
+    changePageNum(countFrom, data.count);
+    console.log(data);
 };
 
 const generateHTML = (results) => {

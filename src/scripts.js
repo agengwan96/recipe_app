@@ -1,7 +1,9 @@
 const searchForm = document.querySelector('form');
-const searchResult = document.querySelector('.search-result');
+const searchResult = document.querySelector('.search-results');
 const container = document.querySelector('.container');
 let searchQuery = '';
+let countFrom = 1;
+let countTo = 20;
 
 searchForm.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -21,4 +23,24 @@ async function fetchAPI(){
     };
     const response = await fetch(url, options);
     const data = await response.json();
+    generateHTML(data.hits);
 };
+
+const generateHTML = (results) => {
+    let generatedHTML = '';
+    results.map(result => {
+        generatedHTML += `
+        <div class="item">
+            <img src="${result.recipe.image}" alt="">
+            <div class="flex-container">
+                <h1 class="title">${result.recipe.label}</h1>
+                <a class="view-btn" href="${result.recipe.url}" target="_blank">View Recipe</a>
+            </div>
+            <p class="item-data">Calories: ${result.recipe.calories.toFixed(2)}</p>
+            <p class="item-data">Diet Label: ${result.recipe.dietLabels.length > 0 ? result.recipe.dietLabels : 'No Data Found'}</p>
+            <p class="item-data">Health Label: ${result.recipe.healthLabels}</p>
+        </div>
+        `;
+    });
+    searchResult.innerHTML = generatedHTML;
+}

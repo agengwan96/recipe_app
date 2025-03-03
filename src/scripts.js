@@ -3,9 +3,10 @@ const searchResult = document.querySelector('.search-results');
 const container = document.querySelector('.container');
 let searchQuery = '';
 
-nextBtn.addEventListener('click', () => {
-    countFrom += 20;
-    countTo += 20;
+
+searchForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    searchQuery = e.target.querySelector('input').value;
     fetchAPI();
 });
 
